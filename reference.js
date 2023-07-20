@@ -38,3 +38,20 @@ if (typeof globalObject.Intl === "undefined") {
     });
 }
 
+
+// Infinity
+const maxNumber = Math.pow(10, 1000); // Max positive number
+if (maxNumber === Infinity) {
+    // Expected output: "Let's call it infinity!"
+}
+
+console.log(1 / maxNumber);
+// Expected output: 0
+
+// Using Infinity
+console.log(Infinity);
+console.log(Infinity + 1);
+console.log(Math.pow(10, 1000));
+console.log(Math.log(0));
+console.log(1 / Infinity);
+console.log(1 / 0);
