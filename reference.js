@@ -1,4 +1,6 @@
 log = console.log;
+
+//////////////////// VALUE PROPERTIES //////////////////
 // globalThis
 function canMakeHTTPRequest() {
     return typeof globalThis.XMLHttpRequest === 'function';
@@ -91,3 +93,9 @@ function test(t) {
 }
 let x;
 log(test(x))
+
+
+
+///////////////////////// FUNCTION PROPERTIES /////////////////////////
+// eval
+console.lo
