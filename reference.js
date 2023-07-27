@@ -428,12 +428,12 @@ function roughScale(x, base) {
 //======================decodeUURI()========================/
 const uri = 'htpps://mozilla.org/?x=шеллы'
 const encoded = encodeURI(uri);
-console.log(encoded);
+// console.log(encoded);
 
 try {
-    console.log(decodeURI(encoded));
+    // console.log(decodeURI(encoded));
 } catch (e) {
-    console.error(e);
+    // console.error(e);
 }
 
 // Examples
@@ -457,3 +457,29 @@ decodeURIComponent(
 // } catch (e) {
 //     console.error(e);
 // }
+
+
+//======================decodeURIComponenet()========================
+function containsEncodedComponents(x) {
+    return (decodeURI(x) != decodeURIComponent(x));
+}
+console.log(containsEncodedComponents('%3Fx%3Dtest'));
+console.log(containsEncodedComponents('%D1%88%D0%B5%D0%BB%D0%BB%D1%8B'));
+
+// Examples
+// Decoding a Cyrillic URL component
+decodeURIComponent("JavaScript_%D1%88%D0%B5%D0%BB%D0%BB%D1%8B");
+// Catching errors
+// try {
+//     const a = decodeURIComponent("%E0%A4%A");
+// } catch (e) {
+//     console.error(e);
+// }
+
+// Decoding query parameters from a URL
+function decodeQueryParam(p) {
+    return decodeURIComponent(p.replace(/\+/g, " "));
+}
+
+decodeQueryParam("search+query%20%28correct%29");
+
