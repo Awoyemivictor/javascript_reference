@@ -459,12 +459,12 @@ decodeURIComponent(
 // }
 
 
-//======================decodeURIComponenet()========================
+//======================decodeURIComponenet()========================/
 function containsEncodedComponents(x) {
     return (decodeURI(x) != decodeURIComponent(x));
 }
-console.log(containsEncodedComponents('%3Fx%3Dtest'));
-console.log(containsEncodedComponents('%D1%88%D0%B5%D0%BB%D0%BB%D1%8B'));
+// console.log(containsEncodedComponents('%3Fx%3Dtest'));
+// console.log(containsEncodedComponents('%D1%88%D0%B5%D0%BB%D0%BB%D1%8B'));
 
 // Examples
 // Decoding a Cyrillic URL component
@@ -483,3 +483,44 @@ function decodeQueryParam(p) {
 
 decodeQueryParam("search+query%20%28correct%29");
 
+
+//==========================encodeURI()====================================/
+const uri2 = 'https://mozilla.org/?x=шеллы';
+const encoded2 = encodeURI(uri2);
+// console.log(encoded2);
+
+// try {
+//     console.log(decodeURI(encoded2));
+// } catch (e) {
+//     console.error(e);
+// }
+
+// Examples
+// encodeURI() vs encodeURIComponent()
+const set1 = ";/?:@&=+$,#";
+const set2 = "-.!~*'()";
+const set3 = "ABC abc 123";
+
+console.log(encodeURI(set1));
+console.log(encodeURI(set2));
+console.log(encodeURI(set3));
+
+console.log(encodeURIComponent(set1));
+console.log(encodeURIComponent(set2));
+console.log(encodeURIComponent(set3));
+
+// Encoding a lone high surrogate throws
+encodeURI("\uD800\uDFFF");
+encodeURI("\uD800");
+encodeURI("\uDFFF");
+
+// Encoding for RFC3986
+function encodeRFC3986URI(str) {
+    return encodeURI(str)
+        .replace(/%5B/g, "[")
+        .replace(/%5D/g, "]")
+        .replace(
+            /[!'()*]/g,
+            (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`,
+        );
+}
