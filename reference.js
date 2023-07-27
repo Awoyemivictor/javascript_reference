@@ -284,3 +284,39 @@ function myCalculator() {
     let result = eval(input);
     console.log(result);
 } 
+
+
+//=================isFinite()==================/
+function div(x) {
+    if (isFinite(1000 / x)) {
+        return 'Number is NOT Infinity.';
+    }
+    return 'Number is Infinity!';
+}
+
+// console.log(div(0));
+// console.log(div(1));
+
+// Examples
+// console.log(isFinite(Infinity));
+// console.log(isFinite(NaN));
+// console.log(isFinite(-Infinity));
+
+// console.log(isFinite(0));
+// console.log(isFinite(2e64));
+// console.log(isFinite(910));
+
+// // Would've been false with the more robust Number.isFinite();
+// console.log(isFinite(null));
+// console.log(isFinite("0"));
+
+
+//==================isNan()=================/
+function milliseconds(x) {
+    if (isNaN(x)) {
+        return 'Not a number!';
+    }
+    return x * 1000;
+}
+console.log(milliseconds('100F'));
+console.log(milliseconds('0.0314E+2'));
