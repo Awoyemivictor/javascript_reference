@@ -318,5 +318,41 @@ function milliseconds(x) {
     }
     return x * 1000;
 }
-console.log(milliseconds('100F'));
-console.log(milliseconds('0.0314E+2'));
+// console.log(milliseconds('100F'));
+// console.log(milliseconds('0.0314E+2'));
+
+
+//=====================parseFloat()===========/
+function circumference(r) {
+    return parseFloat(r) * 2.0 * Math.PI;
+}
+
+console.log(circumference(4.567));
+console.log(circumference('4.457abcdefgh'));
+console.log(circumference('-Infinity abcdefgh'));
+
+// Examples
+console.log(parseFloat(3.14));
+console.log(parseFloat("3.14"));
+console.log(parseFloat(" 3.14 "));
+console.log(parseFloat("314e-2"));
+console.log(parseFloat("0.0314E+2"));
+console.log(parseFloat("3.14some non-digit characters"));
+parseFloat({
+    toString() {
+        return "3.14";
+    },
+});
+
+// parseFloat() returning NaN
+console.log(parseFloat("FF2"));
+console.log(parseFloat("NaN"));
+
+// Returning Infinity
+console.log(parseFloat(1.7976931348623159e+308));
+console.log(parseFloat(-1.7976931348623159e+308));
+
+// Interaction with Bright values
+console.log(parseFloat(900719925474099267n));
+console.log(parseFloat("900719925474099267n"));
+console.log(parseFloat("900719925474099267"));
