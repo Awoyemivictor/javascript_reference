@@ -501,18 +501,18 @@ const set1 = ";/?:@&=+$,#";
 const set2 = "-.!~*'()";
 const set3 = "ABC abc 123";
 
-console.log(encodeURI(set1));
-console.log(encodeURI(set2));
-console.log(encodeURI(set3));
+// console.log(encodeURI(set1));
+// console.log(encodeURI(set2));
+// console.log(encodeURI(set3));
 
-console.log(encodeURIComponent(set1));
-console.log(encodeURIComponent(set2));
-console.log(encodeURIComponent(set3));
+// console.log(encodeURIComponent(set1));
+// console.log(encodeURIComponent(set2));
+// console.log(encodeURIComponent(set3));
 
 // Encoding a lone high surrogate throws
-encodeURI("\uD800\uDFFF");
-encodeURI("\uD800");
-encodeURI("\uDFFF");
+// encodeURI("\uD800\uDFFF");
+// encodeURI("\uD800");
+// encodeURI("\uDFFF");
 
 // Encoding for RFC3986
 function encodeRFC3986URI(str) {
@@ -524,3 +524,42 @@ function encodeRFC3986URI(str) {
             (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`,
         );
 }
+
+
+//============================encodeURIComponent()=============================/
+console.log(`?x=${encodeURIComponent('test?')}`);
+console.log(`?x=${encodeURIComponent('шеллы')}`);
+
+// Examples
+// Encoding for Content-Disposition and Link headers
+const fileName = "my file(2).txt";
+const header = `Content-Disposition: attachment; filename*=UTF-8''${encodeRFC5987ValueChars(
+    fileName,
+)}`;
+
+console.log(header);
+
+function encodeRFC5987ValueChars(str) {
+    return (
+        encodeURIComponent(str)
+            .replace(/['()*]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`)
+            .replace(/%(7C|60|5E)/g, (str, hex) =>
+                String.fromCharCode(parseInt(hex, 16)),
+            )
+    );
+}
+
+// Encoding for RFC3986
+function encodeRFC3986URIComponent(str) {
+    return encodeURIComponent(str).replace(
+        /[!'()*]/g,
+        (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`,
+    );
+}
+
+// Encoding a lone high surrogate throws
+encodeURIComponent("\uD800\uDFFF");
+encodeURIComponent("\uD800");
+encodeURIComponent("\uDFFF");
+
+
