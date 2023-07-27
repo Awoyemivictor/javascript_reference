@@ -327,17 +327,17 @@ function circumference(r) {
     return parseFloat(r) * 2.0 * Math.PI;
 }
 
-console.log(circumference(4.567));
-console.log(circumference('4.457abcdefgh'));
-console.log(circumference('-Infinity abcdefgh'));
+// console.log(circumference(4.567));
+// console.log(circumference('4.457abcdefgh'));
+// console.log(circumference('-Infinity abcdefgh'));
 
 // Examples
-console.log(parseFloat(3.14));
-console.log(parseFloat("3.14"));
-console.log(parseFloat(" 3.14 "));
-console.log(parseFloat("314e-2"));
-console.log(parseFloat("0.0314E+2"));
-console.log(parseFloat("3.14some non-digit characters"));
+// console.log(parseFloat(3.14));
+// console.log(parseFloat("3.14"));
+// console.log(parseFloat(" 3.14 "));
+// console.log(parseFloat("314e-2"));
+// console.log(parseFloat("0.0314E+2"));
+// console.log(parseFloat("3.14some non-digit characters"));
 parseFloat({
     toString() {
         return "3.14";
@@ -345,14 +345,83 @@ parseFloat({
 });
 
 // parseFloat() returning NaN
-console.log(parseFloat("FF2"));
-console.log(parseFloat("NaN"));
+// console.log(parseFloat("FF2"));
+// console.log(parseFloat("NaN"));
 
 // Returning Infinity
-console.log(parseFloat(1.7976931348623159e+308));
-console.log(parseFloat(-1.7976931348623159e+308));
+// console.log(parseFloat(1.7976931348623159e+308));
+// console.log(parseFloat(-1.7976931348623159e+308));
 
 // Interaction with Bright values
-console.log(parseFloat(900719925474099267n));
-console.log(parseFloat("900719925474099267n"));
-console.log(parseFloat("900719925474099267"));
+// console.log(parseFloat(900719925474099267n));
+// console.log(parseFloat("900719925474099267n"));
+// console.log(parseFloat("900719925474099267"));
+
+
+//=====================parseInt()======================/
+function roughScale(x, base) {
+    const parsed = parseInt(x, base);
+    if (isNaN(parsed)) { return 0; }
+    return parsed * 100;
+}
+
+// console.log(roughScale(' 0xF ', 16));
+// console.log(roughScale('321', 2));
+
+// Examples returning 15
+// console.log(parseInt("0xF", 16));
+// console.log(parseInt("F", 16));
+// console.log(parseInt("17", 8));
+// console.log(parseInt("015", 10))
+// console.log(parseInt("15,123", 10));
+// console.log(parseInt("FXX123", 16));
+// console.log(parseInt("1111", 2));
+// console.log(parseInt("15 * 3", 10));
+// console.log(parseInt("15e2", 10));
+// console.log(parseInt("15px", 10));
+// console.log(parseInt("12", 13));
+
+// Examples returning NaN
+// console.log(parseInt("Hello", 8));
+// console.log(parseInt("546", 2));
+
+// Examples returning -15
+// console.log(parseInt("-F", 16));
+// console.log(parseInt("-0F", 16));
+// console.log(parseInt("-0XF", 16));
+// console.log(parseInt("-17", 8));
+// console.log(parseInt("-15", 10));
+// console.log(parseInt("-1111", 2));
+// console.log(parseInt("-15e1", 10));
+// console.log(parseInt("-12", 13));
+
+// Examples returning 224
+// console.log(parseInt("0e0", 16));
+
+// Dees not handle BigInt values
+// console.log(parseInt("900719925474099267n"));
+
+// Does not work with numeric separators
+// console.log(parseInt("123_456"));
+
+// Using parseint() on non-strings
+// console.log(parseInt(null, 36));
+// console.log(parseInt(undefined, 36));
+
+// It may work on small numbers
+// console.log(parseInt(15.99, 10));
+// console.log(parseInt(-15.1, 10));
+
+// For large and small numbers, parseInt() will return a one-digit integer
+// console.log(parseInt(4.7 * 1e22, 10));
+// console.log(parseInt(0.00000000000434, 10));
+
+// console.log(parseInt(0.0000001, 10));
+// console.log(parseInt(0.000000123, 10));
+// console.log(parseInt(1e-7, 10));
+// console.log(parseInt(1000000000000000000000, 10));
+// console.log(parseInt(1230000000000000000000000, 10));
+// console.log(parseInt(1e21, 10));
+
+
+
