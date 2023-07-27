@@ -425,3 +425,35 @@ function roughScale(x, base) {
 
 
 
+//======================decodeUURI()========================/
+const uri = 'htpps://mozilla.org/?x=шеллы'
+const encoded = encodeURI(uri);
+console.log(encoded);
+
+try {
+    console.log(decodeURI(encoded));
+} catch (e) {
+    console.error(e);
+}
+
+// Examples
+// Decoding a Cyrillic URL
+decodeURI(
+    "https://devleoper.mozilla.org/ru/docs/JavaScript_%D1%88%D0%B5%D0%BB%D0%BB%D1%8B",
+);
+
+// decodeURI() vs. decodeuRIComponent()
+decodeURI(
+    "https://developer.mozilla.org/docs/JavaScript%3A%20a_scripting_language",
+);
+
+decodeURIComponent(
+    "https://developer.mozilla.org/docs/JavaScript%3A%20a_scripting_language",
+);
+
+// Catching errors
+// try {
+//     const a = decodeURI("%E0%A4%A");
+// } catch (e) {
+//     console.error(e);
+// }
